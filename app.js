@@ -11,11 +11,12 @@ app.get("/",function(req,res){
 });
 
 app.post("/",function(req,res){
-		console.log();
+		
 		const url="https://api.openweathermap.org/data/2.5/weather?q="+req.body.cityName+"&units=metric&appid=18541bb2e58bd28ec73f8bd6069fb924";
 		https.get(url,function(response){
 			console.log(response.statusCode);
 			response.on("data",function(data){
+				console.log(JSON.parse(data));
 				res.write("<h1>The temperature is "+JSON.parse(data).main.temp+" degree Celcius</h1>");
 				res.write("<h3>The weather is currently "+JSON.parse(data).weather[0].description+" in "+req.body.cityName+"</h1>");
 				res.write("<img src=http://openweathermap.org/img/wn/"+JSON.parse(data).weather[0].icon+"@2x.png>");

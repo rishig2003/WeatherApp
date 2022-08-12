@@ -18,7 +18,7 @@ app.post("/",function(req,res){
 			response.on("data",function(data){
 				console.log(JSON.parse(data));
 				res.write("<h1>The temperature is "+JSON.parse(data).main.temp+" degree Celcius</h1>");
-				res.write("<h3>The weather is currently "+JSON.parse(data).weather[0].description+" in "+req.body.cityName+"</h1>");
+				res.write("<h3>The weather is currently "+JSON.parse(data).weather[0].description+" in "+req.body.cityName+"</h3>");
 				res.write("<img src=http://openweathermap.org/img/wn/"+JSON.parse(data).weather[0].icon+"@2x.png>");
 				res.send();
 			});

@@ -17,9 +17,14 @@ app.post("/",function(req,res){
 			// console.log(response.statusCode);
 			response.on("data",function(data){
 				console.log(JSON.parse(data));
+<<<<<<< HEAD
 				// res.write("<h2>"+req.body.cityName+"</h2>");
 				res.write("<h1>"+JSON.parse(data).main.temp+"&#176C</h1>");
 				res.write("<h3>Weather: "+JSON.parse(data).weather[0].description+" in "+req.body.cityName+"</h1>");
+=======
+				res.write("<h1>The temperature is "+JSON.parse(data).main.temp+" degree Celcius</h1>");
+				res.write("<h3>The weather is currently "+JSON.parse(data).weather[0].description+" in "+req.body.cityName+"</h3>");
+>>>>>>> d5ef1ead888d49a582958ee797e5e3ea5103e7b9
 				res.write("<img src=http://openweathermap.org/img/wn/"+JSON.parse(data).weather[0].icon+"@2x.png>");
 				res.send();
 			});
